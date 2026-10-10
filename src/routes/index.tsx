@@ -1,17 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ChartNoAxesColumnIncreasing, CodeXml, FileUser } from "lucide-react";
+import logoAsset from "@/assets/dts-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Domain nicht in Verwendung" },
+      { title: "DTS | Digital Trust Solutions GmbH" },
       {
         name: "description",
-        content: "Diese Domain ist derzeit nicht in Verwendung.",
+        content: "Digital Trust Solutions GmbH – Software Engineering, Accounting und professionelle Bewerbungsunterlagen.",
       },
-      { property: "og:title", content: "Domain nicht in Verwendung" },
+      { property: "og:title", content: "DTS | Digital Trust Solutions GmbH" },
       {
         property: "og:description",
-        content: "Diese Domain ist derzeit nicht in Verwendung.",
+        content: "Software Engineering, Accounting und professionelle Bewerbungsunterlagen von Digital Trust Solutions GmbH.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -22,41 +24,32 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="relative flex min-h-screen overflow-hidden bg-background px-6 py-10 text-foreground sm:px-10 sm:py-12">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-border" />
-
-      <div className="mx-auto flex w-full max-w-6xl flex-col">
-        <header className="flex items-center justify-between font-mono text-xs uppercase text-muted-foreground">
-          <span>Domainstatus</span>
-          <span aria-label="Inaktiv" className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-status" />
-            Inaktiv
-          </span>
-        </header>
-
-        <section className="grid flex-1 place-items-center py-20">
-          <div className="w-full max-w-3xl">
-            <div className="mb-10 flex h-16 w-16 items-center justify-center rounded-full border border-border sm:mb-14 sm:h-20 sm:w-20">
-              <div className="relative h-7 w-7 rounded-full border border-foreground sm:h-9 sm:w-9">
-                <span className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-foreground" />
-                <span className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-foreground" />
-              </div>
-            </div>
-
-            <p className="mb-5 font-mono text-xs uppercase text-muted-foreground">
-              Kein Inhalt hinterlegt
-            </p>
-            <h1 className="max-w-2xl text-4xl font-medium leading-tight sm:text-6xl lg:text-7xl">
-              Diese Domain ist derzeit nicht in Verwendung.
-            </h1>
+    <main className="dts-page bg-background text-foreground">
+      <section aria-labelledby="brand-name" className="dts-hero">
+        <h1 id="brand-name" className="sr-only">Digital Trust Solutions GmbH</h1>
+        <img
+          src={logoAsset.url}
+          alt="DTS – Digital Trust Solutions GmbH"
+          width={1536}
+          height={1024}
+          fetchPriority="high"
+          className="dts-logo"
+        />
+        <div className="dts-services" aria-label="Leistungen">
+          <div className="dts-service">
+            <CodeXml aria-hidden="true" className="dts-service-icon" strokeWidth={1.35} />
+            <span>Software<br />Engineering</span>
           </div>
-        </section>
-
-        <footer className="flex items-end justify-between gap-6 border-t border-border pt-5 font-mono text-xs text-muted-foreground">
-          <span>Keine Inhalte verfügbar</span>
-          <span aria-hidden="true">—</span>
-        </footer>
-      </div>
+          <a href="https://www.startsaldo.ch" className="dts-service dts-service-link">
+            <ChartNoAxesColumnIncreasing aria-hidden="true" className="dts-service-icon" strokeWidth={1.35} />
+            <span>Accounting</span>
+          </a>
+          <a href="https://www.bewerbungswerkstatt.ch" className="dts-service dts-service-link">
+            <FileUser aria-hidden="true" className="dts-service-icon" strokeWidth={1.35} />
+            <span>Professionelle<br />Bewerbungsunterlagen</span>
+          </a>
+        </div>
+      </section>
     </main>
   );
 }
