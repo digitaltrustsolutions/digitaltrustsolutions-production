@@ -11,4 +11,4 @@
 
 ## Project architecture
 
-- Keep the product as a single public placeholder route with no application state; the domain only needs a static status page.
+- Keep the product as a single public, stateless presentation route; service destinations are external links and entrance animations are CSS-only.
