@@ -12,4 +12,4 @@
 ## Project architecture
 
 - Keep the product as a single public, stateless presentation route; service destinations are external links and entrance animations are CSS-only.
-- Serve optimized brand media through asset pointers and preload the main logo; keep a real square favicon in public so browsers and crawlers can fetch it directly.
+- Serve brand media (logo, share image, favicon) as real files in public/ with a PNG fallback and preload the logo; CDN asset pointers failed to load reliably on the live site.

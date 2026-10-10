@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ChartNoAxesColumnIncreasing, CodeXml, FileUser } from "lucide-react";
-import logoAsset from "@/assets/dts-logo-white.webp.asset.json";
-import shareAsset from "@/assets/dts-share.jpg.asset.json";
-
-const shareImageUrl = `https://id-preview--8d6efa8c-2516-4023-b1ba-594adb35c077.lovable.app${shareAsset.url}`;
+const LOGO_WEBP = "/dts-logo.webp?v=3";
+const LOGO_PNG = "/dts-logo.png?v=3";
+const shareImageUrl = "https://id-preview--8d6efa8c-2516-4023-b1ba-594adb35c077.lovable.app/og-image.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -26,7 +25,7 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: shareImageUrl },
     ],
-    links: [{ rel: "preload", as: "image", href: logoAsset.url, type: "image/webp", fetchPriority: "high" }],
+    links: [{ rel: "preload", as: "image", href: LOGO_WEBP, type: "image/webp", fetchPriority: "high" }],
   }),
   component: Index,
 });
@@ -36,15 +35,19 @@ function Index() {
     <main className="dts-page bg-background text-foreground">
       <section aria-labelledby="brand-name" className="dts-hero">
         <h1 id="brand-name" className="sr-only">Digital Trust Solutions GmbH</h1>
-        <img
-          src={logoAsset.url}
+        <picture>
+          <source srcSet={LOGO_WEBP} type="image/webp" />
+          <img
+          src={LOGO_PNG}
           alt="DTS – Digital Trust Solutions GmbH"
           width={1600}
           height={534}
           loading="eager"
           fetchPriority="high"
+          decoding="async"
           className="dts-logo"
-        />
+          />
+        </picture>
         <div className="dts-services" aria-label="Leistungen">
           <div className="dts-service">
             <CodeXml aria-hidden="true" className="dts-service-icon" strokeWidth={1.35} />
