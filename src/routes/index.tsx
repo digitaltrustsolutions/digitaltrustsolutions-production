@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ChartNoAxesColumnIncreasing, CodeXml, FileUser } from "lucide-react";
-import logoAsset from "@/assets/dts-logo.png.asset.json";
+import logoAsset from "@/assets/dts-logo-white.webp.asset.json";
+import shareAsset from "@/assets/dts-share.jpg.asset.json";
+
+const shareImageUrl = `https://id-preview--8d6efa8c-2516-4023-b1ba-594adb35c077.lovable.app${shareAsset.url}`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -16,8 +19,14 @@ export const Route = createFileRoute("/")({
         content: "Software Engineering, Accounting und professionelle Bewerbungsunterlagen von Digital Trust Solutions GmbH.",
       },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:image", content: shareImageUrl },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "DTS-Logo auf weissem Hintergrund" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: shareImageUrl },
     ],
+    links: [{ rel: "preload", as: "image", href: logoAsset.url, type: "image/webp", fetchPriority: "high" }],
   }),
   component: Index,
 });
@@ -30,8 +39,9 @@ function Index() {
         <img
           src={logoAsset.url}
           alt="DTS – Digital Trust Solutions GmbH"
-          width={1536}
-          height={1024}
+          width={1600}
+          height={534}
+          loading="eager"
           fetchPriority="high"
           className="dts-logo"
         />
